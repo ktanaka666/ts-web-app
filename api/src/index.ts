@@ -6,7 +6,7 @@ const port = 3000
 
 app.get('/', (req: express.Request, res: express.Response) => {
   res.json({
-    msg: 'Hello, world'
+    msg: 'Hello, world',
   })
 })
 
