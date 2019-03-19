@@ -1,0 +1,46 @@
+version: "3"
+services:
+  api:
+    build:
+      context: .
+      dockerfile: ./docker/api/Dockerfile
+    ports:
+      - "80:3000"
+    volumes:
+      - ./api/src/:/var/www/src
+    restart: always
+    depends_on:
+      - db
+      - cache
+    environment:
+      - DB_HOST=db
+      - DB_NAME=testdb
+      - DB_USER=root
+      - DB_PASS=root
+    networks:
+      - ts-web-app
+  db:
+    build:
+      context: .
+      dockerfile: ./docker/db/Dockerfile
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./docker/db/init:/docker-entrypoint-initdb.d
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      TZ: "Asia/Tokyo"
+    networks:
+      - ts-web-app
+  cache:
+    image: redis:5.0.3-alpine
+    ports:
+      - "6379:6379"
+    restart: always
+    networks:
+      - ts-web-app
+
+networks:
+  ts-web-app:
+    driver: bridge
