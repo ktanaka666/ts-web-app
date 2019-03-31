@@ -1,5 +1,5 @@
 {
-  "name": "api",
+  "name": "ts-app-api",
   "version": "1.0.0",
   "description": "",
   "main": "index.ts",
@@ -8,7 +8,7 @@
     "dev": "nodemon -L --config nodemon.json",
     "tsnode": "ts-node ./src/index.ts",
     "tsc": "tsc",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint": "eslint --fix src/**/*.ts"
   },
   "author": "",
   "license": "ISC",

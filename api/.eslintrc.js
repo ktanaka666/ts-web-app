@@ -2,9 +2,9 @@ module.exports = {
   extends: [
     'plugin:prettier/recommended',
     'prettier/@typescript-eslint',
-    'plugin:@typescript-eslint/recommend',
+    'plugin:@typescript-eslint/recommended',
   ],
-  plugins: ['typescript-eslint'],
+  plugins: ['@typescript-eslint'],
   parser: '@typescript-eslint/parser',
   parserOptions: {
     sourceType: 'module',
@@ -15,6 +15,7 @@ module.exports = {
     },
   },
   rules: {
-    'node/no-missing-import': 'error',
+    // 'node/no-missing-import': 'error',
+    '@typescript-eslint/indent': ['error', 2]
   },
 }
